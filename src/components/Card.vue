@@ -1,0 +1,53 @@
+<template>
+  <div class="card">
+    <img :src="data.image" alt="Card" width="200" />
+    <p>{{ data.name }}</p>
+    <div class="card-footer">
+      <span>{{ data.price }} {{ data.currency }}</span>
+      <button @click="navigateToCart" class="card-footer-button">
+        ADD BASKET
+      </button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "BaseCard",
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
+  methods: {
+    navigateToCart() {
+      this.$router.push({ name: "Cart" });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.card {
+  border: 1px solid;
+  width: 300px;
+  padding: 15px;
+
+  &-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &-button {
+      color: #fff;
+      background-color: #b96d00;
+      width: 150px;
+      height: 35px;
+      border: 0px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  }
+}
+</style>
