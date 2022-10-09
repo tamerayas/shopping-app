@@ -4,7 +4,7 @@
     <p>{{ data.name }}</p>
     <div class="card-footer">
       <span>{{ data.price }} {{ data.currency }}</span>
-      <button @click="navigateToCart" class="card-footer-button">
+      <button @click="addCart(data)" class="card-footer-button">
         ADD BASKET
       </button>
     </div>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: "BaseCard",
   props: {
@@ -21,9 +22,14 @@ export default {
     },
   },
   methods: {
-    navigateToCart() {
-      this.$router.push({ name: "Cart" });
+     ...mapMutations({
+      addToCart: "cartStore/addToCart"
+    }),
+    addCart(data) {
+      this.addToCart({ ...data, unit: 1 });
+      this.$router.push({ path: "/my-cart" });
     },
+   
   },
 };
 </script>

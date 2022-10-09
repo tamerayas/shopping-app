@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Card v-for="(item, index) in products.data" :key="index" :data="item" />
+    <Card 
+      v-for="(item, index) in products.data" 
+      :key="index" 
+      :data="item" 
+    />
   </div>
 </template>
 
@@ -32,6 +36,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-</style>
