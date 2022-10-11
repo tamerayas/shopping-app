@@ -2,23 +2,25 @@
   <div class="cart-item">
     <div class="cart-item-head">
       <img :src="data.image" :alt="data.name" width="150" />
-      <div>{{ data.name }}</div>
-      <div>{{ data.price }}</div>
+      <div class="cart-item-content">
+        <div>{{ data.name }}</div>
+        <div>{{ data.price }} {{ data.currency }} </div>
+      </div>
     </div>
-    <div>
+    <div class="cart-footer-wrapper">
       <div class="cart-footer">
         <button
           class="cart-item-button"
           @click="decrease(data.id)"
-          :disabled="unit === 1"
-					:class="{'disabled': unit === 1}"
+          :disabled="amount === 1"
+          :class="{ disabled: amount === 1 }"
         >
           -
         </button>
-        <input class="cart-item-input" v-model="unit" />
+        <input class="cart-item-input" v-model="amount" />
         <button class="cart-item-button" @click="increase(data.id)">+</button>
       </div>
-      <div class="remove">
+      <div class="remove" @click="removeItem(data.id)">
         <span>REMOVE</span>
       </div>
     </div>
@@ -31,7 +33,7 @@ export default {
   name: "CartItem",
   data() {
     return {
-      unit: 1,
+      amount: 1,
     };
   },
   props: {
@@ -41,35 +43,47 @@ export default {
     },
   },
   watch: {
-    unit(newData) {
-      console.log(newData);
-      this.unit = Number(newData);
+    amount(newValue) {
+      this.amount = Number(newValue);
     },
   },
   methods: {
+    ...mapMutations({
+      increment: "cart/increment",
+      decrement: "cart/decrement",
+      removeItem: "cart/removeItem",
+    }),
     increase() {
-      this.unit += 1;
+      this.amount += 1;
       this.increment(this.data.id);
     },
     decrease() {
-      this.unit -= 1;
+      this.amount -= 1;
       this.increment(this.data.id);
     },
-    ...mapMutations({
-      increment: "cartStore/increment",
-      decrement: "cartStore/decrement",
-    }),
   },
   created() {
-    this.unit = this.data.unit;
+    this.amount = this.data.amount;
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .cart-item {
+  padding: 40px;
   &-head {
     display: flex;
+  }
+
+  &-content {
+    align-content: center;
+    align-items: center;
+    row-gap: 10px;
+    margin: 10px;
+
+    :nth-child(2) {
+      margin-top: 100px;
+    }
   }
 
   &-input {
@@ -91,9 +105,14 @@ export default {
     display: flex;
     justify-content: space-between;
 
-		.disabled {
-			cursor: not-allowed;
-		}
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .disabled {
+      cursor: not-allowed;
+    }
   }
 
   input::-webkit-outer-spin-button,

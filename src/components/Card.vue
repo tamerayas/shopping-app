@@ -23,10 +23,10 @@ export default {
   },
   methods: {
      ...mapMutations({
-      addToCart: "cartStore/addToCart"
+      addToCart: "cart/addToCart"
     }),
     addCart(data) {
-      this.addToCart({ ...data, unit: 1 });
+      this.addToCart({ ...data, amount: 1 });
       this.$router.push({ path: "/my-cart" });
     },
    

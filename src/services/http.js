@@ -14,7 +14,10 @@ instance.interceptors.response.use(
   function (response) {
     return response;
   },
+
   function (error) {
+    //Best solution for error handle.
+    //But it can handle with "error.response.status"
     store.dispatch('notification/setNotification', {
       message: error.response.data.message ?? 'Unknown Error!',
       status: true,

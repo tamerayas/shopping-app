@@ -1,29 +1,42 @@
 <template>
   <span class="my-cart-header">MY CART</span> &nbsp;
   <span class="my-cart-header">({{ itemCount }})</span>
-  <CartItem
-    v-for="(item, index) in cart"
-    :key="index"
-    :data="item"
-  />
+  <div>
+    <CartItem v-for="(item, index) in cart" :key="index" :data="item" />
+    <div v-if="cart.length === 0">
+      <h2 class="button-wrapper">Your cart is empty!</h2>
+    </div>
+    <div class="button-wrapper">
+      <button @click="continueShopping">CONTINUE SHOPPING</button>
+      <button @click="submitOrder()">PLACE ORDER</button>
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import CartItem from "@/components/CartItem.vue";
 
 export default {
   name: "BaseCart",
   components: {
-    CartItem
+    CartItem,
   },
   computed: {
     ...mapGetters({
-      itemCount: "cartStore/itemCount",
+      itemCount: "cart/itemCount",
     }),
     ...mapState({
-      cart: store => store.cartStore.cart
-    })
+      cart: (store) => store.cart.cart,
+    }),
+  },
+  methods: {
+    ...mapActions({
+      submitOrder: "cart/submitOrder",
+    }),
+    continueShopping() {
+      this.$router.push({ name: "ProductList" });
+    },
   },
 };
 </script>
@@ -33,5 +46,35 @@ export default {
   &-header {
     font-weight: bold;
   }
+}
+
+.button-wrapper {
+  display: flex;
+  column-gap: 10px;
+  justify-content: center;
+  margin: 200px 0px  200px 0px;
+
+  :nth-child(1) {
+    background-color: #f0f0f0;
+    color: #000000;
+    border: 1px solid;
+  }
+
+  button {
+    color: #fff;
+    background-color: #b96d00;
+    width: 150px;
+    height: 35px;
+    border: 0px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+}
+
+.cart-empty {
+  display: flex;
+  top: 50%;
+  left: 50%;
+
 }
 </style>
