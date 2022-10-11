@@ -21,7 +21,7 @@ instance.interceptors.response.use(
     store.dispatch('notification/setNotification', {
       message: error.response.data.message ?? 'Unknown Error!',
       status: true,
-      type: "success",
+      type: "danger",
     });
 
     return Promise.reject(error);

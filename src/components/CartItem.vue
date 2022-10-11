@@ -3,8 +3,10 @@
     <div class="cart-item-head">
       <img :src="data.image" :alt="data.name" width="150" />
       <div class="cart-item-content">
-        <div>{{ data.name }}</div>
-        <div>{{ data.price }} {{ data.currency }} </div>
+        <div class="cart-item-content-name">{{ data.name }}</div>
+        <div class="cart-item-content-price">
+          {{ data.price }} {{ data.currency }}
+        </div>
       </div>
     </div>
     <div class="cart-footer-wrapper">
@@ -70,29 +72,56 @@ export default {
 
 <style lang="scss" scoped>
 .cart-item {
-  padding: 40px;
+  padding: 15px;
+  border: 1px solid #ccc;
+
+  &:not(:last-of-type){
+    border-bottom: 0px;
+  }
+
   &-head {
     display: flex;
   }
 
   &-content {
-    align-content: center;
-    align-items: center;
-    row-gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    display: flex;
+    row-gap: 35px;
     margin: 10px;
+    flex-direction: column;
 
-    :nth-child(2) {
-      margin-top: 100px;
+    &-name {
+      text-align: left;
+      max-height: 36px;
+      height: 36px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    &-price {
+      font-weight: bold;
     }
   }
 
   &-input {
     width: 30px;
     text-align: center;
+    border: 1px solid #eee;
+    border-radius: 2px;
+
+    &:focus,
+    &:active {
+      border: 1px solid #bcc;
+      outline: 0px;
+    }
   }
 
   &-button {
-    border: 1px solid;
+    border: 1px solid #bcc;
     border-radius: 50%;
     width: 20px;
     justify-content: center;
@@ -108,10 +137,17 @@ export default {
     &-wrapper {
       display: flex;
       justify-content: space-between;
+      margin-top: 7px;
     }
 
     .disabled {
       cursor: not-allowed;
+    }
+  }
+
+  .remove {
+    span {
+      font-weight: bold;
     }
   }
 

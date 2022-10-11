@@ -1,5 +1,7 @@
 <template>
-  <div class="loader"></div>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
 </template>
 
 <script>
@@ -9,10 +11,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .loader {
-  position: absolute;
-  left: 50%;
-  top: 35%;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;

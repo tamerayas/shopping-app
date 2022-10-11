@@ -1,14 +1,13 @@
 <template>
   <div class="alert-wrap">
     <div class="alert" :class="[type]">
-      <span >{{ message }}</span>
-      <i @click="hideAlert"></i>
+      <span>{{ message }}</span>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapMutations } from "vuex";
+import { mapActions } from "vuex";
 export default {
   props: {
     message: String,
@@ -18,41 +17,50 @@ export default {
     ...mapActions({
       setNotification: "notification/setNotification",
     }),
-    hideAlert() {
-      this.setNotification({ status: false });
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.alert-wrap {
+  z-index: 10;
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  animation-name: moveAlert;
+  animation-duration: 2s;
+  border: 1px solid inherit;
 
-  .alert-wrap {
-    z-index: 10;
-    top: 0;
+  .alert {
+    max-width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .success {
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    background-color: #d4edda;
+  }
+
+  .danger {
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    background-color: #f8d7da;
+  }
+}
+@keyframes moveAlert {
+  0% {
+    inset-inline-end: 1vw;
+    inset-block-start: 0;
+  }
+  50% {
+    inset-inline-end: 0.5vw;
+    inset-block-start: 0;
+  }
+  100% {
     inset-inline-end: 0;
-    position: absolute;
-    background: transparent;
-    animation-name: moveAlert;
-    animation-duration: 2s;
-
-    .alert {
-      max-width: 100%;
-    }
-
+    inset-block-start: 0;
   }
-  @keyframes moveAlert {
-    0% {
-      inset-inline-end: 1vw;
-      inset-block-start: 0;
-    }
-    50% {
-      inset-inline-end: .5vw;
-      inset-block-start: 0;
-    }
-    100% {
-      inset-inline-end: 0;
-      inset-block-start: 0;
-    }
-  }
+}
 </style>

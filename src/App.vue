@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     ...mapState({
-      notification: (store) => store.notification.notification
+      notification: (store) => store.notification.notification,
     }),
   },
 };
@@ -32,5 +32,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  justify-content: center;
+}
+
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  box-sizing: border-box;
 }
 </style>

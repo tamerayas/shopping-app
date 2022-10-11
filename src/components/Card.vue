@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations } from "vuex";
 export default {
   name: "BaseCard",
   props: {
@@ -22,24 +22,24 @@ export default {
     },
   },
   methods: {
-     ...mapMutations({
-      addToCart: "cart/addToCart"
+    ...mapMutations({
+      addToCart: "cart/addToCart",
     }),
     addCart(data) {
       this.addToCart({ ...data, amount: 1 });
       this.$router.push({ path: "/my-cart" });
     },
-   
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
-  border: 1px solid;
-  width: 300px;
+  border: 1px solid #ccc;
+  width: 350px;
+  max-width: 350px;
   padding: 15px;
-
+  
   &-footer {
     display: flex;
     justify-content: space-around;
