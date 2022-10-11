@@ -1,7 +1,9 @@
-import { default as productStore } from "./products";
-import { default as cartStore } from "./cart";
+import products from "./products";
+import cart from "./cart";
+import notification from "./notification";
 
 export default {
-	productStore,
-	cartStore
+	products,
+	cart,
+	notification
 };

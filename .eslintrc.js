@@ -13,7 +13,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'linebreak-style': 0,
-    'semi': [2, 'always']
+    'semi': [2, 'always'],
+    'vue/multi-word-component-names': 'off',
   },
   overrides: [
     {
