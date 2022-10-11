@@ -22,6 +22,14 @@ export default {
   components: {
     CartItem,
   },
+  methods: {
+    ...mapActions({
+      submitOrder: "cart/submitOrder",
+    }),
+    continueShopping() {
+      this.$router.push({ name: "ProductList" });
+    },
+  },
   computed: {
     ...mapGetters({
       itemCount: "cart/itemCount",
@@ -30,13 +38,9 @@ export default {
       cart: (store) => store.cart.cart,
     }),
   },
-  methods: {
-    ...mapActions({
-      submitOrder: "cart/submitOrder",
-    }),
-    continueShopping() {
-      this.$router.push({ name: "ProductList" });
-    },
+  mounted() {
+    const app = document.getElementById("app");
+    app.scrollTo({ top: 0, behavior: 'smooth' });
   },
 };
 </script>
@@ -52,7 +56,7 @@ export default {
   display: flex;
   column-gap: 10px;
   justify-content: center;
-  margin: 200px 0px  200px 0px;
+  margin: 200px 0px 200px 0px;
 
   :nth-child(1) {
     background-color: #f0f0f0;
@@ -75,6 +79,5 @@ export default {
   display: flex;
   top: 50%;
   left: 50%;
-
 }
 </style>
