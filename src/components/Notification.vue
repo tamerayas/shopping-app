@@ -23,18 +23,18 @@ export default {
 
 <style lang="scss" scoped>
 .alert-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
   z-index: 10;
-  top: 0px;
-  right: 0px;
-  position: absolute;
+  width: fit-content;
   animation-name: moveAlert;
   animation-duration: 2s;
   border: 1px solid inherit;
 
   .alert {
-    max-width: 100%;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 7px;
+    border-radius: 5px;
   }
 
   .success {

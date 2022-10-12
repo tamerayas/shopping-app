@@ -1,7 +1,7 @@
 <template>
   <div class="cart-item">
     <div class="cart-item-head">
-      <img :src="data.image" :alt="data.name" width="150" />
+      <img :src="data.image" :alt="data.name" width="150" height="150" />
       <div class="cart-item-content">
         <div class="cart-item-content-name">{{ data.name }}</div>
         <div class="cart-item-content-price">
@@ -75,7 +75,7 @@ export default {
   padding: 15px;
   border: 1px solid #ccc;
 
-  &:not(:last-of-type){
+  &:not(:last-of-type) {
     border-bottom: 0px;
   }
 
@@ -100,12 +100,12 @@ export default {
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
-      color: #0E0E0E;
+      color: #0e0e0e;
     }
 
     &-price {
       font-weight: bold;
-      color: #492C34;
+      color: #492c34;
     }
   }
 
@@ -129,7 +129,7 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: #FDFDFD;
+    background-color: #fdfdfd;
   }
 
   .cart-footer {
@@ -151,7 +151,7 @@ export default {
   .remove {
     span {
       font-weight: bold;
-      color: #0E0E0E;
+      color: #0e0e0e;
       cursor: pointer;
     }
   }

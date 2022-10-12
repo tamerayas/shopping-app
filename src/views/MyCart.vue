@@ -45,10 +45,6 @@ export default {
       cart: (store) => store.cart.cart,
     }),
   },
-  mounted() {
-    const app = document.getElementById("app");
-    app.scrollTo({ top: 0, behavior: "smooth" });
-  },
 };
 </script>
 
@@ -97,7 +93,7 @@ export default {
 
   :nth-child(1) {
     background-color: #fff;
-    color: #2C273A;
+    color: #2c273a;
     border: 1px solid #ccc;
   }
 
@@ -110,6 +106,11 @@ export default {
     border-radius: 3px;
     cursor: pointer;
     padding: 0 20px;
+
+    &:disabled {
+      background-color: #ff96a0;
+      cursor: not-allowed;
+    }
   }
 }
 
