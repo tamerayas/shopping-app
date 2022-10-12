@@ -1,7 +1,7 @@
 <template>
   <Loader v-if="isLoading" />
   <div class="card-wrapper">
-    <Card v-for="(item, index) in products.data" :key="index" :data="item" />
+    <Card v-for="(item, index) in products" :key="index" :data="item" />
   </div>
 </template>
 

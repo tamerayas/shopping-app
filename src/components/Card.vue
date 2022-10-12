@@ -39,7 +39,7 @@ export default {
   width: 350px;
   max-width: 350px;
   padding: 15px;
-  
+
   &-footer {
     display: flex;
     justify-content: space-around;
@@ -47,7 +47,7 @@ export default {
 
     &-button {
       color: #fff;
-      background-color: #FB641B;
+      background-color: #fb641b;
       width: 150px;
       height: 35px;
       border: 0px;

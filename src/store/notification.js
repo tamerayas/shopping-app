@@ -5,8 +5,8 @@ export default {
 	mutations: {
 		updateNotification(state, payload) {
 			state.notification.status = payload.status;
-			state.notification.message = payload.message,
-				state.notification.type = payload.type;
+			state.notification.type = payload.type;
+			state.notification.message = payload.message;
 		},
 		hideNotification(state) {
 			setTimeout(() => {

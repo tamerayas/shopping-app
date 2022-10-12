@@ -5,8 +5,6 @@ export default {
 		products: {},
 		isLoading: true
 	},
-	getters: {
-	},
 	mutations: {
 		updateProducts(state, payload) {
 			state.products = payload;
@@ -19,9 +17,10 @@ export default {
 		async fetchProducts({ state, commit }) {
 			if (state.products?.data?.length > 0)
 				return;
+
 			commit('setIsLoading', true);
 			const products = await axios.get('/listing');
-			commit('updateProducts', products);
+			commit('updateProducts', products.data);
 			commit('setIsLoading', false);
 		}
 	},

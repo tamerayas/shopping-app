@@ -49,11 +49,11 @@ export default {
 			const response = await axios.post('/order', requestData);
 
 			if (response) {
-        dispatch('notification/setNotification', {
+				dispatch('notification/setNotification', {
 					type: 'success',
 					message: response.data.message,
-      		status: true,
-				}, {root: true});
+					status: true,
+				}, { root: true });
 
 				commit('clearCart');
 			}

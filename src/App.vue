@@ -36,7 +36,8 @@ export default {
   justify-content: center;
 }
 
-body, html {
+body,
+html {
   margin: 0px;
   padding: 0px;
 }

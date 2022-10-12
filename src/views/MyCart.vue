@@ -8,12 +8,18 @@
     <div class="cart-item-wrapper">
       <CartItem v-for="(item, index) in cart" :key="index" :data="item" />
     </div>
-    <div v-if="cart.length === 0">
+    <div v-if="cart?.length === 0">
       <h2 class="cart-empty">Your cart is empty!</h2>
     </div>
     <div class="button-wrapper">
-      <button @click="continueShopping">CONTINUE SHOPPING</button>
-      <button :disabled="cart.length === 0" @click="submitOrder()">
+      <button class="continue-button" @click="continueShopping">
+        CONTINUE SHOPPING
+      </button>
+      <button
+        class="place-order-button"
+        :disabled="cart.length === 0"
+        @click="submitOrder()"
+      >
         PLACE ORDER
       </button>
     </div>
@@ -21,7 +27,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import CartItem from "@/components/CartItem.vue";
 
 export default {
@@ -38,11 +44,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({
-      itemCount: "cart/itemCount",
-    }),
     ...mapState({
       cart: (store) => store.cart.cart,
+      itemCount: (store) => store.cart.cart.length,
     }),
   },
 };
