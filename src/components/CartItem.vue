@@ -100,10 +100,12 @@ export default {
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      color: #0E0E0E;
     }
 
     &-price {
       font-weight: bold;
+      color: #492C34;
     }
   }
 
@@ -127,6 +129,7 @@ export default {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-color: #FDFDFD;
   }
 
   .cart-footer {
@@ -136,8 +139,8 @@ export default {
 
     &-wrapper {
       display: flex;
-      justify-content: space-between;
       margin-top: 7px;
+      column-gap: 35%;
     }
 
     .disabled {
@@ -148,6 +151,8 @@ export default {
   .remove {
     span {
       font-weight: bold;
+      color: #0E0E0E;
+      cursor: pointer;
     }
   }
 

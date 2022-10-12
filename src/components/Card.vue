@@ -4,7 +4,7 @@
     <p>{{ data.name }}</p>
     <div class="card-footer">
       <span>{{ data.price }} {{ data.currency }}</span>
-      <button @click="addCart(data)" class="card-footer-button">
+      <button class="card-footer-button" @click="addCart(data)">
         ADD BASKET
       </button>
     </div>
@@ -47,7 +47,7 @@ export default {
 
     &-button {
       color: #fff;
-      background-color: #b96d00;
+      background-color: #FB641B;
       width: 150px;
       height: 35px;
       border: 0px;

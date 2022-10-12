@@ -69,6 +69,7 @@ export default {
 
   &-header {
     font-weight: bold;
+    color: #212121;
   }
 }
 
@@ -96,7 +97,7 @@ export default {
 
   :nth-child(1) {
     background-color: #fff;
-    color: #000000;
+    color: #2C273A;
     border: 1px solid #ccc;
   }
 
