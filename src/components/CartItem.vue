@@ -47,6 +47,7 @@ export default {
   watch: {
     amount(newValue) {
       this.amount = Number(newValue);
+      this.setAmount({ id: this.data.id, amount: this.amount });
     },
   },
   methods: {
@@ -54,6 +55,7 @@ export default {
       increment: "cart/increment",
       decrement: "cart/decrement",
       removeItem: "cart/removeItem",
+      setAmount: "cart/setAmount"
     }),
     increase() {
       this.amount += 1;

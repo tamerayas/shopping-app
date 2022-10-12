@@ -30,11 +30,15 @@ export default {
 			}
 		},
 		removeItem(state, payload) {
-			const index = state.cart.findIndex(data => data.id === payload);
-			state.cart.splice(index, 1);
+			state.cart = state.cart.filter(data => data.id !== payload);
 		},
 		clearCart(state) {
 			state.cart = [];
+		},
+		setAmount(state, payload) {
+			const { id, amount } = payload;
+
+			state.cart.find(data => data.id === id).amount = amount;
 		}
 	},
 	actions: {
