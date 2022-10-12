@@ -1,4 +1,6 @@
-# frontend-spa-case
+# shopping-app
+
+Live Version: https://shopping-app-tamerayas.vercel.app/
 
 ## Project setup
 ```
