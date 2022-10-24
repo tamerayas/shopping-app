@@ -1,25 +1,11 @@
 import axios from "@/services/http";
+import router from "@/router";
 
 export default {
 	state: {
 		cart: []
 	},
-	getters: {
-		itemCount(state) {
-			return state.cart.length;
-		}
-	},
 	mutations: {
-		addToCart(state, payload) {
-			// If exist same item just update amount
-			const existSameItem = state.cart.find(item => item.id === payload.id);
-			if (existSameItem) {
-				existSameItem.amount += 1;
-			}
-			else {
-				state.cart.unshift(payload);
-			}
-		},
 		increment(state, payload) {
 			state.cart.find(item => item.id === payload).amount += 1;
 		},
@@ -39,6 +25,16 @@ export default {
 			const { id, amount } = payload;
 
 			state.cart.find(data => data.id === id).amount = amount;
+		},
+		addToCart(state, payload) {
+			const existSameItem = state.cart.find(item => item.id === payload.id);
+			if (existSameItem) {
+				existSameItem.amount += 1;
+			}
+			else {
+				state.cart.unshift(payload);
+			}
+			router.push({ path: "/my-cart" });
 		}
 	},
 	actions: {
@@ -50,9 +46,8 @@ export default {
 				};
 			});
 
-			const response = await axios.post('/order', requestData);
-
-			if (response) {
+			try {
+				const response = await axios.post('/order', requestData);
 				dispatch('notification/setNotification', {
 					type: 'success',
 					message: response.data.message,
@@ -60,6 +55,12 @@ export default {
 				}, { root: true });
 
 				commit('clearCart');
+			} catch (error) {
+				dispatch('notification/setNotification', {
+					type: 'danger',
+					message: 'Couldnot place an order!',
+					status: true,
+				}, { root: true });
 			}
 		}
 	},

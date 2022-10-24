@@ -3,7 +3,7 @@ import axios from "@/services/http";
 export default {
 	state: {
 		products: {},
-		isLoading: true
+		isLoading: false
 	},
 	mutations: {
 		updateProducts(state, payload) {
@@ -15,7 +15,7 @@ export default {
 	},
 	actions: {
 		async fetchProducts({ state, commit }) {
-			if (state.products?.data?.length > 0)
+			if (state.products?.length > 0)
 				return;
 
 			commit('setIsLoading', true);
